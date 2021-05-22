@@ -1,7 +1,4 @@
 import os
-from os import listdir, getcwd
-from os.path import join
-
 
 # 根据图片名生成供label生成txt标签的train和valid文件
 if __name__ == '__main__':
