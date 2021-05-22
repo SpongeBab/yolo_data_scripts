@@ -28,7 +28,7 @@ def xmin_ymin(xml_path):
 
 
 # only can draw one picture
-def aw():
+def draw():
     image = cv2.imread('//coco/VOC/VOC2012/JPEGImages/02_20201017135000_2.jpg')
     tree = ET.parse('//coco/VOC/VOC2012/Annotations/02_20201017135000_2.xml')
     root = tree.getroot()
