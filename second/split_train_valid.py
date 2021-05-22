@@ -3,7 +3,7 @@ import os
 
 
 def split_file(All_path, train_path, valid_path):
-    # 将图片划分为训练集和验证集
+    # 第二步，将图片划分为训练集和验证集
     if not os.path.exists(train_path):
         os.makedirs(train_path)
     if not os.path.exists(valid_path):
