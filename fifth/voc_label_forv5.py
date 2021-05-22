@@ -26,7 +26,7 @@ def convert(size, box):
 
 
 # 为了v5结构准备，直接将这个文件复制到数据集文件夹目录下
-# 生成图片标签文件和训练路径，验证路径
+# 根据图片名生成图片标签文件，和训练路径，验证路径
 def convert_annotation(images_set, image_id):
     in_file = open('../desk_VOC/annotation/%s/%s.xml' % (images_set, image_id))
     out_file = open('../desk_VOC/labels/%s/%s.txt' % (images_set, image_id), 'w')
