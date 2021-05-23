@@ -28,8 +28,8 @@ def convert(size, box):
 # 为了v5结构准备，直接将这个文件复制到数据集文件夹目录下
 # 根据图片名生成图片标签文件，和训练路径，验证路径
 def convert_annotation(images_set, image_id):
-    in_file = open('../desk_VOC/annotation/%s/%s.xml' % (images_set, image_id))
-    out_file = open('../desk_VOC/labels/%s/%s.txt' % (images_set, image_id), 'w')
+    in_file = open('E:\\desk_VOC\\annotation\\%s\\%s.xml' % (images_set, image_id))
+    out_file = open('E:\\desk_VOC\\labels\\%s\\%s.txt' % (images_set, image_id), 'w')
     tree = ET.parse(in_file)
     root = tree.getroot()
     size = root.find('size')
@@ -52,13 +52,13 @@ def convert_annotation(images_set, image_id):
 wd = getcwd()
 
 for image_set in sets:
-    if not os.path.exists('../desk_VOC/labels/%s' % image_set):
-        os.makedirs('../desk_VOC/labels/%s' % image_set)
-    image_ids = open('../desk_VOC/ImageSets/Main/%s.txt' % image_set).read().strip().split()
+    if not os.path.exists('E:\\desk_VOC\\labels/%s' % image_set):
+        os.makedirs('E:\\desk_VOC\\labels\\%s' % image_set)
+    image_ids = open('E:\\desk_VOC\\ImageSets\\Main\\%s.txt' % image_set).read().strip().split()
     print(image_ids)
     list_file = open('%s.txt' % image_set, 'w')
     for image_id in image_ids:
         print(image_id)
-        list_file.write('%s/images/%s/%s.jpg\n' % (wd, image_set, image_id))
+        list_file.write('E:\\desk_VOC\\images\\%s\\%s.jpg\n' % (image_set, image_id))
         convert_annotation(image_set, image_id)
     list_file.close()
