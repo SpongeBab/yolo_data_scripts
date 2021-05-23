@@ -20,7 +20,7 @@ def split_file(All_path, train_path, valid_path):
         valid_jpg = os.path.join(valid_path, file)
         # print('src:', src)
         # print('dst:', dst)
-        if count < 350:
+        if count < 1800:
             shutil.copyfile(src, train_jpg)
         else:
             shutil.copy(src, valid_jpg)
@@ -30,4 +30,4 @@ def split_file(All_path, train_path, valid_path):
 
 if __name__ == '__main__':
     # remove_file("E:\\数据集\\total", "train_path", "valid_path")
-    split_file("E:\\desk_VOC\\JPEGImages", "E:\\desk_VOC\\images\\train", "E:\\desk_VOC\\images\\valid")
+    split_file("E:\\desk_VOC\\JPEGImages", "E:\\voc_desk\\desk-123-2000\\images\\train", "E:\\voc_desk\\desk-123-2000\\images\\valid")

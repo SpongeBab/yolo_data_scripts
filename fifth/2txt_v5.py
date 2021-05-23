@@ -23,10 +23,10 @@ def generate_txt(source_path, txt_path):
 
 
 if __name__ == '__main__':
-    source_train_folder = './images/train'
-    train_txt_output = './ImageSets/Main'
+    source_train_folder = 'E:\\voc_desk\\desk-123-2000\\images\\train'
+    train_txt_output = 'E:\\voc_desk\\desk-123-2000\\ImageSets\\Main'
     generate_txt(source_train_folder, train_txt_output)
-    source_valid_folder = './images/valid'
-    valid_txt_output = './ImageSets/Main'
+    source_valid_folder = 'E:\\voc_desk\\desk-123-2000\\images\\valid'
+    valid_txt_output = 'E:\\voc_desk\\desk-123-2000\\ImageSets\\Main'
     generate_txt(source_valid_folder, valid_txt_output)
 

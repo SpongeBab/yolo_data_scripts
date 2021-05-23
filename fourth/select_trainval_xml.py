@@ -20,10 +20,10 @@ def select_person(annotation, images, output_annotations):
 if __name__ == '__main__':
     Annotation = "E:\\desk_VOC\\Annotations"
 
-    train_source_images = "E:\\desk_VOC\\images\\train"
-    train_output_annotation = "E:\\desk_VOC\\annotation\\train"
+    train_source_images = "E:\\voc_desk\\desk-123-2000\\images\\train"
+    train_output_annotation = "E:\\voc_desk\\desk-123-2000\\annotation\\train"
     select_person(Annotation, train_source_images, train_output_annotation)
 
-    valid_source_images = "E:\\desk_VOC\\images\\valid"
-    valid_output_annotation = "E:\\desk_VOC\\annotation\\valid"
+    valid_source_images = "E:\\voc_desk\\desk-123-2000\\images\\valid"
+    valid_output_annotation = "E:\\voc_desk\\desk-123-2000\\annotation\\valid"
     select_person(Annotation, valid_source_images, valid_output_annotation)
