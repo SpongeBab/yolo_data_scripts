@@ -81,12 +81,11 @@ def json_to_xml(json_path, xml_path):
         file, extension = os.path.splitext(jpg_name)
         if extension == ".jpg":
             xml_name = jpg_name.replace(".jpg", ".xml")
-
             filename["file_name"] = os.path.join(xml_path, xml_name)
 
         depth = 3
-        width = 1920
-        height = 1080
+        width = images[1]
+        height = images[3]
 
         head = headstr % (xml_path, jpg_name, os.path.join(xml_path, jpg_name), width, height, depth)
         # print(head)
@@ -116,6 +115,6 @@ def json_to_xml(json_path, xml_path):
 
 
 if __name__ == '__main__':
-    json_path = "E:\\desk_VOC\\JSON"  # 该目录为存放json文件的路径
-    xml_path = "E:\\desk_VOC\\Annotations"  # 该目录为放xml文件的路径
+    json_path = "E:\\voc_desk\\desk_3_400\\json"  # 该目录为存放json文件的路径
+    xml_path = "E:\\voc_desk\\desk_3_400\\annotations"  # 该目录为放xml文件的路径
     json_to_xml(json_path, xml_path)
