@@ -21,7 +21,7 @@ def split_file(data_path, train_path, valid_path):
 
     train_dataset, test_dataset = random_split(
         dataset=dataset,
-        lengths=[4310, 333],
+        lengths=[4310, 333], # 两者和必须和数据集数量严格相等
         generator=torch.Generator().manual_seed(0)
     )
 
