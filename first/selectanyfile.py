@@ -15,7 +15,7 @@ def remove_file(old_path, new_path):
     for file in filelist:
         filename, extension = os.path.splitext(file)
         # if extension == ".png" or extension == ".jpg":
-        if extension == ".json":
+        if extension == ".jpg":  # .png .jpeg
             print(file)
             src = os.path.join(old_path, file)
             dst = os.path.join(new_path, file)
@@ -28,4 +28,4 @@ def remove_file(old_path, new_path):
 
 if __name__ == '__main__':
     # remove_file("E:\\数据集\\total", "E:\\Desk\\JPEGImages")
-    remove_file("H:\\数据集\\total_1000", "H:\\数据集\\first_1000\\JSON")
+    remove_file("E:\\数据集\\face", "E:\\VOC\\face\\images")
