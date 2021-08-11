@@ -8,7 +8,7 @@ from os.path import join
 sets = ['train', 'valid']
 # classes = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable",
 # "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
-classes = ["studentDesk"]
+classes = ["desk"]
 
 
 def convert(size, box):
@@ -28,8 +28,8 @@ def convert(size, box):
 # 为了v5结构准备，直接将这个文件复制到数据集文件夹目录下
 # 根据图片名生成图片标签文件，和训练路径，验证路径
 def convert_annotation(images_set, image_id):
-    in_file = open('E:\\voc_desk\\desk-123-2000\\annotation\\%s\\%s.xml' % (images_set, image_id))
-    out_file = open('E:\\voc_desk\\desk-123-2000\\labels\\%s\\%s.txt' % (images_set, image_id), 'w')
+    in_file = open('E:\\Dataset\\desk-4\\annotation\\%s\\%s.xml' % (images_set, image_id))
+    out_file = open('E:\\Dataset\\desk-4\\labels\\%s\\%s.txt' % (images_set, image_id), 'w+')
     tree = ET.parse(in_file)
     root = tree.getroot()
     size = root.find('size')
@@ -39,9 +39,9 @@ def convert_annotation(images_set, image_id):
     for obj in root.iter('object'):
         difficult = obj.find('difficult').text
         cls = obj.find('name').text
-        if cls not in classes or int(difficult) == 1:
-            continue
-        cls_id = classes.index(cls)
+        # if cls not in classes or int(difficult) == 1:
+        #     continue
+        cls_id = classes.index(cls)+1
         xmlbox = obj.find('bndbox')
         b = (float(xmlbox.find('xmin').text), float(xmlbox.find('xmax').text), float(xmlbox.find('ymin').text),
              float(xmlbox.find('ymax').text))
@@ -52,13 +52,13 @@ def convert_annotation(images_set, image_id):
 wd = getcwd()
 
 for image_set in sets:
-    if not os.path.exists('E:\\voc_desk\\desk-123-2000\\labels/%s' % image_set):
-        os.makedirs('E:\\voc_desk\\desk-123-2000\\labels\\%s' % image_set)
-    image_ids = open('E:\\voc_desk\\desk-123-2000\\ImageSets\\Main\\%s.txt' % image_set).read().strip().split()
+    if not os.path.exists('E:\\Dataset\\desk-4\\labels\\%s' % image_set):
+        os.makedirs('E:\\Dataset\\desk-4\\labels\\%s' % image_set)
+    image_ids = open('E:\\Dataset\\desk-4\\ImageSet\\Main\\%s.txt' % image_set).read().strip().split()
     print(image_ids)
-    list_file = open('E:\\voc_desk\\desk-123-2000\\%s.txt' % image_set, 'w')
+    list_file = open('E:\\Dataset\\desk-4\\%s.txt' % image_set, 'w')
     for image_id in image_ids:
         print(image_id)
-        list_file.write('E:\\voc_desk\\desk-123-2000\\images\\%s\\%s.jpg\n' % (image_set, image_id))
+        list_file.write('E:\\Dataset\\desk-4\\images\\%s\\%s.jpg\n' % (image_set, image_id))
         convert_annotation(image_set, image_id)
     list_file.close()
