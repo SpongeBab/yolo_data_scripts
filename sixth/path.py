@@ -2,6 +2,7 @@ import os
 
 
 def generate_path(source_path, txt_path):
+    # 根据图片生成路径
     if not os.path.exists(txt_path):
         os.makedirs(txt_path)
 
@@ -19,12 +20,13 @@ def generate_path(source_path, txt_path):
     txt_file.close()
     print(count)
 
+wd = os.getcwd()
 
 if __name__ == '__main__':
-    source_train_folder = './images/train'
-    train_txt_output = ''
+    source_train_folder = 'E:\\Dataset\\coco-2\\images\\train'
+    train_txt_output = wd
     generate_path(source_train_folder, train_txt_output)
-    source_valid_folder = './images/valid'
-    valid_txt_output = ''
+    source_valid_folder = 'E:\\Dataset\\coco-2\\images\\valid'
+    valid_txt_output = wd
     generate_path(source_valid_folder, valid_txt_output)
 
