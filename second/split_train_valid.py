@@ -1,6 +1,7 @@
 import shutil
 import os
-
+from sklearn import model_selection
+import numpy as np
 
 def split_file(All_path, train_path, valid_path):
     # 第二步，将图片划分为训练集和验证集
@@ -20,14 +21,20 @@ def split_file(All_path, train_path, valid_path):
         valid_jpg = os.path.join(valid_path, file)
         # print('src:', src)
         # print('dst:', dst)
-        if count < 1800:
-            shutil.copyfile(src, train_jpg)
+        x = np.array(filelist)
+        print(x)
+        train, test = model_selection.train_test_split(x, test_size=0.8)
+        if count < 4300:
+            shutil.copyfile(src, train)
         else:
-            shutil.copy(src, valid_jpg)
+            shutil.copy(src, test)
         count += 1
+        print(count)
     print(count)
 
 
 if __name__ == '__main__':
     # remove_file("E:\\数据集\\total", "train_path", "valid_path")
-    split_file("E:\\desk_VOC\\JPEGImages", "E:\\voc_desk\\desk-123-2000\\images\\train", "E:\\voc_desk\\desk-123-2000\\images\\valid")
+    split_file("E:\\qxdetection\\data\\images",
+               "E:\\qxdetection\\images\\train",
+               "E:\\qxdetection\\images\\valid")
