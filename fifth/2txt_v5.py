@@ -1,8 +1,7 @@
 import os
-from os import listdir, getcwd
-from os.path import join
 
 
+# 根据训练集和验证集图片生成图片id
 def generate_txt(source_path, txt_path):
     if not os.path.exists(txt_path):
         os.makedirs(txt_path)
@@ -16,17 +15,17 @@ def generate_txt(source_path, txt_path):
         count += 1
         file_path = os.path.join(source_path, file_obj)
         file_name, file_extend = os.path.splitext(file_obj)
-
         txt_file.write(file_name + "\n")
     txt_file.close()
     print(count)
 
 
 if __name__ == '__main__':
-    source_train_folder = 'E:\\voc_desk\\desk-123-2000\\images\\train'
-    train_txt_output = 'E:\\voc_desk\\desk-123-2000\\ImageSets\\Main'
+    source_train_folder = 'E:\\Dataset\\coco-2\\images\\train'
+    train_txt_output = 'E:\\Dataset\\desk-4\\ImageSet\\Main'
     generate_txt(source_train_folder, train_txt_output)
-    source_valid_folder = 'E:\\voc_desk\\desk-123-2000\\images\\valid'
-    valid_txt_output = 'E:\\voc_desk\\desk-123-2000\\ImageSets\\Main'
+
+    source_valid_folder = 'E:\\Dataset\\desk-4\\images\\valid'
+    valid_txt_output = 'E:\\Dataset\\desk-4\\ImageSet\\Main'
     generate_txt(source_valid_folder, valid_txt_output)
 
